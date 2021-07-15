@@ -1,30 +1,41 @@
 <template>
   <div class="container welcome">
-    <p>ようこそ！</p>
-    <LoginForm />
-    <!-- ここから追加する -->
-    <SignupForm />
-    <!-- ここまで追加する -->
+    <p>ようこそ</p>
+    <div v-if="shouldShowLoginForm">
+      <LoginForm />
+<!-- ======= ここから追加する ======= -->
+      <p class="change-form">初めての方は<span @click="shouldShowLoginForm = false">こちら</span>をクリック</p>
+<!-- ======= ここまで追加する ======= -->
+    </div>
+    <div v-if="!shouldShowLoginForm">
+      <SignupForm />
+<!-- ======= ここから追加する ======= -->
+      <p class="change-form">アカウントをお持ちの方は<span @click="shouldShowLoginForm = true">こちら</span>をクリック</p>
+<!-- ======= ここまで追加する ======= -->
+    </div>
   </div>
 </template>
 
 <script>
 import LoginForm from '../components/LoginForm.vue'
-// ここから変更する
-import SignupForm from '../components/SignupForm.vue'
-export default {
-  components: { LoginForm, SignupForm },
+import SignupForm from "../components/SignupForm.vue"
+export default  {
+  components: { SignupForm, LoginForm },
+  data () {
+    return {
+      shouldShowLoginForm: false
+    }
+  }
 }
-// ここまで変更する
 </script>
+
 
 <style>
   .welcome {
     text-align: center;
     padding: 20px 0;
   }
-
-  /* ここから追加 */
+  /* フォームのスタイル */
   .welcome form {
     width: 300px;
     margin: 20px auto;
@@ -50,5 +61,8 @@ export default {
   .welcome button {
     margin: 20px auto;
   }
-  /* ここまで追加 */
+  /* .change-form {
+    font-size: 14px;
+    margin: 10px;
+  } */
 </style>
