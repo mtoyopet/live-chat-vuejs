@@ -1,19 +1,21 @@
 <template>
   <div class="container welcome">
     <p>ようこそ！</p>
-    <!-- ここから追加する -->
     <LoginForm />
+    <!-- ここから追加する -->
+    <SignupForm />
     <!-- ここまで追加する -->
   </div>
 </template>
 
 <script>
-// ここから追加する
 import LoginForm from '../components/LoginForm.vue'
+// ここから変更する
+import SignupForm from '../components/SignupForm.vue'
 export default {
-  components: { LoginForm },
+  components: { LoginForm, SignupForm },
 }
-// ここまで追加する
+// ここまで変更する
 </script>
 
 <style>
