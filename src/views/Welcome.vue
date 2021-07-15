@@ -61,8 +61,8 @@ export default  {
   .welcome button {
     margin: 20px auto;
   }
-  /* .change-form {
+  .change-form {
     font-size: 14px;
     margin: 10px;
-  } */
+  }
 </style>
