@@ -2,16 +2,12 @@
   <div class="container welcome">
     <p>ようこそ</p>
     <div v-if="shouldShowLoginForm">
-      <LoginForm />
-<!-- ======= ここから追加する ======= -->
+      <LoginForm @redirectToChatRoom="redirectToChatRoom" />
       <p class="change-form">初めての方は<span @click="shouldShowLoginForm = false">こちら</span>をクリック</p>
-<!-- ======= ここまで追加する ======= -->
     </div>
     <div v-if="!shouldShowLoginForm">
-      <SignupForm />
-<!-- ======= ここから追加する ======= -->
+      <SignupForm @redirectToChatRoom="redirectToChatRoom" />
       <p class="change-form">アカウントをお持ちの方は<span @click="shouldShowLoginForm = true">こちら</span>をクリック</p>
-<!-- ======= ここまで追加する ======= -->
     </div>
   </div>
 </template>
@@ -25,10 +21,14 @@ export default  {
     return {
       shouldShowLoginForm: false
     }
+  },
+  methods: {
+    redirectToChatRoom () {
+      this.$router.push({ name: 'Chatroom' })
+    }
   }
 }
 </script>
-
 
 <style>
   .welcome {
