@@ -4,16 +4,44 @@
       <p>こんにちは、<span class="name">{{ name }}</span>さん</p>
       <p class="email">現在、 {{ email }} でログイン中です</p>
     </div>
-    <button>ログアウト</button>
+    <button @click="logout">ログアウト</button>
   </nav>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
+  emits: ['redirectToWelcome'],
   data () {
     return {
       name: window.localStorage.getItem('name'),
-      email: window.localStorage.getItem('uid')      
+      email: window.localStorage.getItem('uid')
+    }
+  },
+  methods: {
+    async logout () {
+      try {
+        const res = await axios.delete('http://localhost:3000/auth/sign_out', {
+          headers: {
+            uid: this.email,
+            "access-token": window.localStorage.getItem('access-token'),
+            client: window.localStorage.getItem('client')
+          }
+        })
+
+        console.log("ログアウトしました")
+        window.localStorage.removeItem('access-token')
+        window.localStorage.removeItem('client')
+        window.localStorage.removeItem('uid')
+        window.localStorage.removeItem('name')
+
+        this.$router.push({ name: 'Welcome' })
+
+        return res
+      } catch (error) {
+        console.log({ error })
+      }
     }
   }
 }
