@@ -1,8 +1,8 @@
 <template>
   <nav>
     <div>
-      <p>こんにちは、XXさん</p>
-      <p class="email">現在、....@...comでログイン中です</p>
+      <p>こんにちは、<span class="name">{{ name }}</span>さん</p>
+      <p class="email">現在、 {{ email }} でログイン中です</p>
     </div>
     <button>ログアウト</button>
   </nav>
@@ -10,7 +10,12 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      name: window.localStorage.getItem('name'),
+      email: window.localStorage.getItem('uid')      
+    }
+  }
 }
 </script>
 
