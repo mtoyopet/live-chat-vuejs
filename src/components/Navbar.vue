@@ -19,41 +19,6 @@ export default {
       email: window.localStorage.getItem('uid'),
       error: null
     }
-  },
-  methods: {
-    async logout () {
-      this.error = null
-
-      try {
-        const res = await axios.delete('http://localhost:3000/auth/sign_out', {
-          headers: {
-            uid: this.email,
-            "access-token": window.localStorage.getItem('access-token'),
-            client: window.localStorage.getItem('client')
-          }
-        })
-
-        if (!res) {
-          new Error('ログアウトできませんでした')
-        }
-
-        if (!this.error) {
-          console.log("ログアウトしました")
-          window.localStorage.removeItem('access-token')
-          window.localStorage.removeItem('client')
-          window.localStorage.removeItem('uid')
-          window.localStorage.removeItem('name')
-
-          this.$router.push({ name: 'Welcome' })
-        }
-
-        this.error = null
-
-        return res
-      } catch (error) {
-        this.error = 'ログアウトできませんでした'
-      }
-    }
   }
 }
 </script>
