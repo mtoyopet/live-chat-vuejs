@@ -15,7 +15,11 @@
 <script>
 export default {
   props: ['messages'],
-
+  data () {
+    return {
+      uid: localStorage.getItem('uid')
+    }
+  },
 }
 </script>
 
