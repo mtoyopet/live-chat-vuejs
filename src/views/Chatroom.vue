@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Navbar />
-    <ChatWindow :messages="messages" />
+    <ChatWindow @connectCable="connectCable" :messages="messages" />
     <NewChatForm @connectCable="connectCable" />
   </div>
 </template>
@@ -51,11 +51,14 @@ export default {
       connected: () => {
         this.getMessages()
       },
-      received: (data) => {
+      received: () => {
         this.getMessages()
       }
     })
   },
+  beforeDestory () {
+    this.messageChannel.unsubscribe()
+  }
 }
 </script>
 
