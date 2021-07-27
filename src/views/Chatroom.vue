@@ -56,6 +56,9 @@ export default {
       }
     })
   },
+  beforeDestory () {
+    this.messageChannel.unsubscribe()
+  }  
 }
 </script>
 
