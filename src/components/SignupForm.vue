@@ -44,7 +44,6 @@ export default {
         if (!this.error) {
           this.$emit('redirectToChatRoom')
         }
-        this.error = null
 
         console.log({ res })
 

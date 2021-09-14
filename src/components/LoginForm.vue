@@ -36,8 +36,6 @@ export default {
           this.$emit('redirectToChatRoom')
         }
 
-        this.error = null
-
         console.log({ res })
         return res
       } catch (error) {
