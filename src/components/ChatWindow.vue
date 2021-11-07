@@ -165,10 +165,10 @@ export default {
     right: 0px;
     font-size: 9px;
   }
-  .heart {
-    color: rgb(236, 29, 29);
+  .received .message::selection {
+    background: #eee;
   }
-  .heart-count {
-    color: rgb(20, 19, 19);
+  .sent .message::selection {
+    background: #677bb4;
   }
 </style>
