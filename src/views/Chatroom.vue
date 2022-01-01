@@ -56,7 +56,7 @@ export default {
       }
     })
   },
-  beforeDestory () {
+  beforeUnmount () {
     this.messageChannel.unsubscribe()
   }
 }
