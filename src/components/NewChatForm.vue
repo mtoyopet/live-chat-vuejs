@@ -17,7 +17,7 @@ export default {
     }
   },
   methods: {
-    handleSubmit (value) {
+    handleSubmit () {
       this.$emit('connectCable', this.message)
       this.message = ''
     }

@@ -51,11 +51,14 @@ export default {
       connected: () => {
         this.getMessages()
       },
-      received: (data) => {
+      received: () => {
         this.getMessages()
       }
     })
   },
+  beforeUnmount () { 
+    this.messageChannel.unsubscribe()
+  }
 }
 </script>
 
